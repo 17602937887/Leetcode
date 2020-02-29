@@ -5,15 +5,10 @@ public class dayOfYear1154 {
     public  static int dayOfYear(String date) {
         int[] ans = new int[]{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int year = 0, month = 0, day = 0;
-        for(int i = 0; i < 4; i++){
-            year = year * 10 + (date.charAt(i) - '0');
-        }
-        for(int i = 5; i < 7; i++){
-            month = month * 10 + (date.charAt(i) - '0');
-        }
-        for(int i = 8; i < 10; i++){
-            day = day * 10 + (date.charAt(i) - '0');
-        }
+        String[] split = date.split("-");
+        year = Integer.parseInt(split[0]);
+        month = Integer.parseInt(split[1]);
+        day = Integer.parseInt(split[2]);
         int cnt = 0;
         if((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) && (month > 2)){
             cnt++;
