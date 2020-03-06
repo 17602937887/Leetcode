@@ -9,4 +9,16 @@ from
 where
     a.departmentid = b.id AND c.salary = a.salary AND c.Departmentid = a.departmentid;
 
+# Write your MySQL query statement below
+
 select
+    b.name as `Department`, a.`name` as Employee , a.salary as salary
+from
+    employee as a, department as b
+where
+    a.departmentid = b.id and (a.departmentid, a.salary)
+    in (select
+            departmentid, max(salary)
+        from
+            employee
+        group by departmentid);
