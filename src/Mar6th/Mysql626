@@ -1,0 +1,15 @@
+# Write your MySQL query statement below
+-- 进行自连接  分三种情况讨论 奇数-偶数 改， 偶数 - 奇数 改， 奇数 且为最大编号 且名字相同 则输出
+select
+    a.id, b.student
+from
+    seat as a, seat as b
+where
+    (IF(a.id % 2 = 1, true, false) AND a.id + 1= b.id )
+    OR
+    (IF(a.id % 2 = 0, true, false) AND a.id - 1 = b.id)
+    OR
+    (IF(a.id % 2 = 1, true, false) AND a.id = (select max(id) from seat) AND a.student = b.student)
+order by
+    a.id;
+
